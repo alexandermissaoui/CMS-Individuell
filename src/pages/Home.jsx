@@ -6,13 +6,15 @@ import Loader from '../components/Loader/Loader'
 import Section1 from '../components/Home/Section1/Section1'
 import Section2 from '../components/Home/Section2/Section2'
 // import { addProduct } from '../store/features/products/productListSlice'
+import { Navigate } from 'react-router-dom'
+
 
 
 const Home = () => {
 
-  // const { user } = useSelector(state => state.auth)
+  const { user } = useSelector(state => state.auth)
 
-  // if (!user) return <Navigate to="/login" replace/>
+  if (!user) return <Navigate to="/login" replace/>
 
   // dispatch(addProduct())
 
