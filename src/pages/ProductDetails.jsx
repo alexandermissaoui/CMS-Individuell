@@ -49,7 +49,8 @@ const ProductDetails = () => {
             {/* <button className='btn-minus'>-</button> */}
             {/* <div className='count'><p>2</p></div> */}
             {/* <button className='btn-plus'>+</button> */}
-            {/* <button className='btn btn-cart'>Add to Cart</button> */}
+            <button className='btn btn-cart'>UPDATE</button>
+            <button className='btn btn-cart'>DELETE</button>
           </div>
           <div className="product-color">
             {/* <div className="btn red"></div> */}
