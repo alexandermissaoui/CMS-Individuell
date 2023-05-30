@@ -6,7 +6,8 @@ import { logInU } from '../store/features/auth/authSlice'
 
 const Login = () => {
 
-  const navi = useNavigate()
+  // const navi = useNavigate()
+  const navigate=useNavigate()
 
   const { user, loading, error } = useSelector(state => state.auth)
   const dispatch = useDispatch()
@@ -26,7 +27,10 @@ const Login = () => {
   const handleSubmit = e => {
     e.preventDefault()
     dispatch(logInU(formData))
-    navi('/')
+    // navi('/')
+    navigate('/')
+
+
   }
 
   return (
@@ -37,7 +41,6 @@ const Login = () => {
             <h1>Please Login to Your Account</h1>
           </div>
           <div>
-            {/* <Link className='no-account' to={'/Registration'}>Don't have an Account yet?</Link> */}
             <label className='email' htmlFor="email">Email*</label>
             <input type="email" name="email" id="email" value={formData.email} onChange={handleChange} />
           </div>

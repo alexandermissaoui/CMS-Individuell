@@ -31,8 +31,6 @@ const UpdateForm = ({product}) => {
         await updateDoc(doc(db,'products',product.id),data)
         navigate('/')
         
-
-        // dispatch(addProduct(data)) 
     }
   return (
 
