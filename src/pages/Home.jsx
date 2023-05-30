@@ -14,7 +14,7 @@ const Home = () => {
 
   const { user } = useSelector(state => state.auth)
 
-  if (!user) return <Navigate to="/login" replace/>
+  
 
   // dispatch(addProduct())
 
@@ -25,7 +25,7 @@ const Home = () => {
   }, [])
 
   const { products, loading, error } = useSelector(state => state.productList)
-
+  if (!user) return <Navigate to="/login" replace/>
   return (
     <div>
       {loading && <Loader />}

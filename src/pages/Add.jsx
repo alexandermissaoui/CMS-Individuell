@@ -37,7 +37,7 @@ const Add = () => {
             price: +productData.price
         }
 
-        dispatch(addProduct(data))
+        dispatch(addProduct(data)) //ta bort
     }
 
     return (

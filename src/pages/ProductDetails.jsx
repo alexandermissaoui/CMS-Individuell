@@ -2,10 +2,10 @@ import '../scssPages/productDetails.scss'
 import React from 'react'
 // import { FaCartPlus } from 'react-icons/fa'
 import useDoc from '../hooks/useDocs'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import Loader from '../components/Loader/Loader'
 import { db } from '../firebase/config'
-import { updateDoc,deleteDoc, doc } from 'firebase/firestore'
+import { updateDoc, deleteDoc, doc } from 'firebase/firestore'
 
 
 
@@ -24,9 +24,10 @@ const ProductDetails = () => {
 }
 
 //Update
- const handleChange = async () => [
-  await updateDoc (doc(db,'products', product.id))
- ]
+ const handleChange = async () => {
+  navigate('/Update')
+  // await updateDoc(doc(db,'products', product.id),)
+}
 
 
 
@@ -64,7 +65,7 @@ const ProductDetails = () => {
           </div>
           <div className="addToCart">
            
-            <button className='btn btn-cart' onClick={handleChange}>UPDATE</button>
+            <Link className='btn btn-cart' to={'/update/'+ product.id}>UPDATE</Link>
 
             <button className='btn btn-cart' onClick={handleDelete}>DELETE</button>
           </div>
