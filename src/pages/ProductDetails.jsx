@@ -2,14 +2,34 @@ import '../scssPages/productDetails.scss'
 import React from 'react'
 // import { FaCartPlus } from 'react-icons/fa'
 import useDoc from '../hooks/useDocs'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Loader from '../components/Loader/Loader'
+import { db } from '../firebase/config'
+import { deleteDoc, doc } from 'firebase/firestore'
+
+
 
 
 const ProductDetails = () => {
 
+  const navigate= useNavigate ()
+
   const { id } = useParams()
   const { data: product, error, loading } = useDoc('products', id)
+  
+//Delete
+  const handleDelete = async () => {
+    await deleteDoc(doc(db,'products', product.id))
+    navigate('/')
+}
+
+//PUT
+ const handleChange = async () => [
+  await changeDoc (doc(db,'products', product.id))
+ ]
+
+
+
 
   if (!product) return (
     <div>
@@ -47,8 +67,9 @@ const ProductDetails = () => {
           </div>
           <div className="addToCart">
            
-            <button className='btn btn-cart'>UPDATE</button>
-            <button className='btn btn-cart'>DELETE</button>
+            <button className='btn btn-cart' onClick={handleChange}>UPDATE</button>
+
+            <button className='btn btn-cart' onClick={handleDelete}>DELETE</button>
           </div>
       
         </div>
