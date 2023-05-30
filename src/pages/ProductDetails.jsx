@@ -5,7 +5,7 @@ import useDoc from '../hooks/useDocs'
 import { useNavigate, useParams } from 'react-router-dom'
 import Loader from '../components/Loader/Loader'
 import { db } from '../firebase/config'
-import { deleteDoc, doc } from 'firebase/firestore'
+import { updateDoc,deleteDoc, doc } from 'firebase/firestore'
 
 
 
@@ -23,9 +23,9 @@ const ProductDetails = () => {
     navigate('/')
 }
 
-//PUT
+//Update
  const handleChange = async () => [
-  await changeDoc (doc(db,'products', product.id))
+  await updateDoc (doc(db,'products', product.id))
  ]
 
 
@@ -40,10 +40,7 @@ const ProductDetails = () => {
 
   return (
     <div className="container-productDetails">
-      <div className='banner'>
-        <img src="https://static.euronews.com/articles/stories/06/48/94/10/1440x810_cmsv2_72145961-5fb7-5e54-852d-997299cf9e10-6489410.jpg" alt="" />
-      </div>
-      {/* ____________________________________SECTION 1____________________________________ */}
+   
       <div className='productdetails-section-1'>
         <div className='container-left'>
           <div className='img-big'>
