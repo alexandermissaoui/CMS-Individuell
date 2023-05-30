@@ -7,8 +7,8 @@ import { Navigate,useNavigate } from 'react-router-dom'
 
 const Add = () => {
 
-    // const { user } = useSelector(state => state.auth)
-    // if (!user) return <Navigate to="/login" replace/>
+    const { user } = useSelector(state => state.auth)
+    if (!user) return <Navigate to="/login" replace/>
 
     const navigate= useNavigate ()
 
