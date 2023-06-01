@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../scssPages/login.scss'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -11,6 +11,7 @@ const Login = () => {
 
   const { user, loading, error } = useSelector(state => state.auth)
   const dispatch = useDispatch()
+  const [submitted, setSubmitted] = useState(false)
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -27,9 +28,14 @@ const Login = () => {
   const handleSubmit = e => {
     e.preventDefault()
     dispatch(logInU(formData))
-    // navi('/')
-    navigate('/')
+    setSubmitted(true)
   }
+
+  useEffect(() => {
+    if(submitted && user) {
+      navigate('/')
+    }
+  }, [submitted, user])
 
 
 
